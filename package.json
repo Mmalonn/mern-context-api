@@ -1,0 +1,19 @@
+{
+  "name": "mern-context-api",
+  "version": "1.0.0",
+  "description": "proyecto mern con subida de imagenes y contex-api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mmalonn/mern-context-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mmalonn/mern-context-api/issues"
+  },
+  "homepage": "https://github.com/Mmalonn/mern-context-api#readme"
+}
