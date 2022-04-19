@@ -1,11 +1,12 @@
 import {Router} from "express";
+import { createPost, deletePost, getPost, getPosts, updatePost } from "../controllers/post.controllers.js";
 const router = Router();
 
-router.get("/posts" , (req,res)=> res.send([]))
-router.post("/posts" , (req,res)=> res.send("new post created"))
-router.put("/posts" , (req,res)=> res.send("post updated"))
-router.delete("/posts" , (req,res)=> res.send("post deleted"))
-router.get("/posts/:id" , (req,res)=> res.send("getting post"))
+router.get("/posts" , getPosts)
+router.post("/posts" , createPost)
+router.put("/posts" , updatePost)
+router.delete("/posts" , deletePost)
+router.get("/posts/:id" , getPost)
 
 
 export default router;
