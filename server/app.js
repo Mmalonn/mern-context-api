@@ -1,13 +1,18 @@
 import express from "express";
-import postsRoutes from "./routes/posts.routes.js";
 import fileUpload from "express-fileupload";
+import postsRoutes from "./routes/posts.routes.js";
 
-const app=express()
 
+const app = express()
+
+//middlewares
 app.use(express.json())
-app.use(postsRoutes);
 app.use(fileUpload({
-    useTempfiles:true
+    useTempFiles: true,
+    tempFileDir: "./upload"
 }))
+
+//rutas
+app.use(postsRoutes);
 
 export default app
