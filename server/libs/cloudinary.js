@@ -10,3 +10,7 @@ export const uploadImage = async filePath => {
         folder: "posts"
     })
 }
+
+export const deleteImage = async id=>{
+    return await cloudinary.uploader.destroy(id);
+}

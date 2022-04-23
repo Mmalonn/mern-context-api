@@ -1,5 +1,5 @@
 import Post from "../models/Post.js";
-import { uploadImage } from "../libs/cloudinary.js";
+import { uploadImage, deleteImage } from "../libs/cloudinary.js";
 import fs from "fs-extra";
 
 
@@ -56,6 +56,9 @@ export const deletePost = async (req, res) => {
         if (!postRemoved) {
             return res.sendStatus(404);
         } else {
+            if (postRemoved.image.public_id) {
+                await deleteImage(postRemoved.image.public_id)
+            }
             return res.sendStatus(204);
         }
     } catch (error) {
