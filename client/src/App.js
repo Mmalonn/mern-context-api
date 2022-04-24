@@ -1,11 +1,15 @@
 import { PostForm, HomePage, NotFoundPage } from "./pages/index";
-
+import {Routes, Route} from "react-router-dom"
 
 
 
 function App() {
   return (
-    <div>prueba</div>
+    <Routes>
+      <Route path="/" element={<HomePage />}></Route>
+      <Route path="/new" element={<PostForm />}></Route>
+      <Route path="*" element={<NotFoundPage />}></Route>
+    </Routes>
   )
 }
 
