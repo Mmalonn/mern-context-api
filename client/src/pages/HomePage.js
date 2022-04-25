@@ -1,21 +1,30 @@
 import { usePosts } from "../context/postContext"
-import { Link } from "react-router-dom";
+import {VscEmptyWindow} from "react-icons/vsc"
 
 export function HomePage() {
-    const { setPosts } = usePosts();
+
+    const { posts } = usePosts()
+
+    if(posts.length===0)return(
+        <div className="flex flex-col justify-center items-center">
+            <VscEmptyWindow className="w-48 h-48 text-white"/>
+            <h1 className="text-white">no hay publicaciones aun</h1>
+        </div>
+    )
+
     return (
         <div>
-            Home Page
-            <br/>
-            <Link className="bg-blue-100" to="/new">
-                go to new
-            </Link>
-            <br/>
-            <button className="bg-red-100" onClick={() => setPosts([1, 2, 3])}>
-                add
-            </button>
+            <div>
+                Inicio
+            </div>
+            {posts.map(post => (
+                <div key={post._id}>
+                    {`title: ${post.title}`}
+                    <br/>
+                    {`descripcion: ${post.description}`}
+                </div>
+            ))}
         </div>
-
     )
 }
 
