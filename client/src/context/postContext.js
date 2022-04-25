@@ -1,6 +1,16 @@
+import { useState, createContext } from "react"
+
+export const context = createContext();
+
 export const PostContainer = ({ children }) => {
-    console.log("conteiner console");
-    return <div>
+
+    const [posts, setPosts] = useState([]);
+    console.log(posts);
+
+    return <context.Provider value={{
+        posts,
+        setPosts
+    }}>
         {children}
-    </div>
+    </context.Provider>
 }
