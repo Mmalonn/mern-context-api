@@ -1,15 +1,17 @@
-import { useContext } from "react"
-import { context } from "../context/postContext"
+import { usePosts } from "../context/postContext"
+import { Link } from "react-router-dom";
 
 export function HomePage() {
-
-    const myContext = useContext(context);
-    console.log(myContext);
-
+    const { setPosts } = usePosts();
     return (
         <div>
             Home Page
-            <button>
+            <br/>
+            <Link className="bg-blue-100" to="/new">
+                go to new
+            </Link>
+            <br/>
+            <button className="bg-red-100" onClick={() => setPosts([1, 2, 3])}>
                 add
             </button>
         </div>
