@@ -2,7 +2,7 @@ import { useState, createContext, useContext, useEffect } from "react";
 import {
   createPostRequests,
   deletePostRequests,
-  getPostRequests,
+  getPostsRequests,
 } from "../api/posts";
 
 const postContext = createContext();
@@ -16,7 +16,7 @@ export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const res = await getPostRequests();
+    const res = await getPostsRequests();
     setPosts(res.data);
   };
 

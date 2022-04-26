@@ -26,9 +26,9 @@ export function PostForm() {
                     <Form onSubmit={handleSubmit}>
                         <Field className="px-3 py-2 focus:outline-none rounded bg-gray-600 text-white w-full" name="title" placeholder="title" />
                         <ErrorMessage component="p" className="text-red-600 text-sm" name="title" />
-                        <Field className="px-3 py-2 focus:outline-none rounded bg-gray-600 text-white w-full" name="description" placeholder="description" />
+                        <Field className="px-3 py-2 focus:outline-none rounded bg-gray-600 text-white w-full my-2" name="description" placeholder="description" />
                         <ErrorMessage component="p" className="text-red-600 text-sm" name="description" />
-                        <button type="submit" >Save</button>
+                        <button className="bg-slate-400 hover:bg-slate-500 px-3 py-1 text-white rounded-sm" type="submit" >Save</button>
                     </Form>
                 )}
             </Formik>
