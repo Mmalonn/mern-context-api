@@ -11,6 +11,7 @@ export function PostForm() {
   const [post, setPost] = useState({
     title: "",
     description: "",
+    image: null,
   });
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export function PostForm() {
             description: Yup.string().required("la descripcion es requerida"),
           })}
           onSubmit={async (values, actions) => {
+            
             if (params.id) {
               await updatePost(params.id, values);
             } else {
@@ -47,7 +49,7 @@ export function PostForm() {
           }}
           enableReinitialize
         >
-          {({ handleSubmit }) => (
+          {({ handleSubmit, setFieldValue }) => (
             <Form onSubmit={handleSubmit}>
               <label
                 htmlFor="title"
@@ -83,8 +85,23 @@ export function PostForm() {
                 className="text-red-600 text-sm"
                 name="description"
               />
+              <label
+                htmlFor="title"
+                className="text-sm block font-bold text-gray-300"
+              >
+                Imagen
+              </label>
+              <input
+                type="file"
+                name="image"
+                className="px-3 py-2 focus:outline-none rounded bg-gray-600 text-white w-full"
+                onChange={(e=>{
+                  setFieldValue("image",e.target.files[0])
+                  console.log(e.target.value)
+                })}
+              />
               <button
-                className="bg-slate-400 hover:bg-slate-500 px-3 py-1 text-white rounded-sm"
+                className="bg-slate-400 hover:bg-slate-500 px-3 py-2 text-white rounded-sm my-2"
                 type="submit"
               >
                 Save
