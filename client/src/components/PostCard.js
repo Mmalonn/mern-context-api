@@ -55,6 +55,7 @@ export function PostCard({ post }) {
           </button>
         </div>
         <p>{post.description}</p>
+        {post.image && <img alt="imagen" src={post.image.url}/>}
       </div>
     </div>
   );
