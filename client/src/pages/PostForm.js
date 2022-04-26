@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { usePosts } from "../context/postContext";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 export function PostForm() {
   const { createPost, getPost, updatePost } = usePosts();
@@ -45,11 +46,12 @@ export function PostForm() {
             } else {
               await createPost(values);
             }
+            actions.setSubmitting(false);
             navigate("/");
           }}
           enableReinitialize
         >
-          {({ handleSubmit, setFieldValue }) => (
+          {({ handleSubmit, setFieldValue,isSubmitting }) => (
             <Form onSubmit={handleSubmit}>
               <label
                 htmlFor="title"
@@ -103,8 +105,11 @@ export function PostForm() {
               <button
                 className="bg-slate-400 hover:bg-slate-500 px-3 py-2 text-white rounded-sm my-2"
                 type="submit"
+                disabled={isSubmitting}
               >
-                Save
+                {isSubmitting ? (
+                  <AiOutlineLoading3Quarters className="animate-spin h-5 w-5"/>
+                ): "Save" }
               </button>
             </Form>
           )}
