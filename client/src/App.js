@@ -4,7 +4,7 @@ import { PostProvider } from "./context/postContext";
 
 function App() {
   return (
-    <div className="bg-neutral-400 min-h-screen flex items-center">
+    <div className="bg-neutral-900 min-h-screen flex items-center">
       <div className="px-10 container m-auto">
         <PostProvider>
           <Routes>
