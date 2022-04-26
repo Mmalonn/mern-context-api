@@ -2,6 +2,7 @@ import { useState, createContext, useContext, useEffect } from "react";
 import {
   createPostRequests,
   deletePostRequests,
+  getPostRequests,
   getPostsRequests,
 } from "../api/posts";
 
@@ -27,8 +28,13 @@ export const PostProvider = ({ children }) => {
 
   const deletePost = async (id) => {
     await deletePostRequests(id);
-    console.log(id+" eliminado");
+    console.log(id + " eliminado");
     setPosts(posts.filter((post) => post._id !== id));
+  };
+
+  const getPost = async (id) => {
+    const res = await getPostRequests(id);
+    return res.data;
   };
 
   useEffect(() => {
@@ -42,6 +48,7 @@ export const PostProvider = ({ children }) => {
         getPosts,
         createPost,
         deletePost,
+        getPost,
       }}
     >
       {children}
