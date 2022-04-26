@@ -4,6 +4,7 @@ import {
   deletePostRequests,
   getPostRequests,
   getPostsRequests,
+  updatePostRequests,
 } from "../api/posts";
 
 const postContext = createContext();
@@ -36,6 +37,11 @@ export const PostProvider = ({ children }) => {
     const res = await getPostRequests(id);
     return res.data;
   };
+  const updatePost = async (id, post) => {
+    const res = await updatePostRequests(id, post);
+    console.log(res);
+    setPosts(posts.map((post) => (post._id === id ? res.data : post)));
+  };
 
   useEffect(() => {
     getPosts();
@@ -49,6 +55,7 @@ export const PostProvider = ({ children }) => {
         createPost,
         deletePost,
         getPost,
+        updatePost,
       }}
     >
       {children}
